@@ -26,7 +26,7 @@ public class IndianStatesData {
 		this.AreaInSqKm = areaInSqKm;
 		this.DensityPerSqKm = densityPerSqKm;
 	}
-	
+
 	public String getState() {
 		return State;
 	}
