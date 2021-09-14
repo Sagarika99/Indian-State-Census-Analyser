@@ -19,7 +19,7 @@ public class IndianStateCensusAnalyser {
 	public static List<IndianStatesData> statesList = new ArrayList<>();
 	public static String FILE_PATH = "C:\\Users\\sshind1\\OneDrive - MORNINGSTAR INC\\Documents\\Java CFP-081\\India State Census Analyser\\lib\\IndianStateCSV.csv";
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IndianStateException {
 		IndianStateCensusAnalyser analyser = new IndianStateCensusAnalyser();
 		analyser.loadIndianStatesData();
 	}
@@ -36,7 +36,12 @@ public class IndianStateCensusAnalyser {
     			String areaInSqKm = iterator.next();
     			String densityPerSqKm = iterator.next();
     			
-    			statesList.add(new IndianStatesData(state, Long.parseLong(population), Long.parseLong(areaInSqKm), Integer.parseInt(densityPerSqKm)));
+    			try {
+    				statesList.add(new IndianStatesData(state, Long.parseLong(population), Long.parseLong(areaInSqKm), Integer.parseInt(densityPerSqKm)));
+    			}
+    			catch (Exception e){
+    				throw new IndianStateException("Type is Incorrect");
+    			}    			
     		});
     		for (int i=0 ; i<statesList.size() ; i++) {
         		System.out.println(statesList.get(i));
