@@ -56,4 +56,16 @@ public class IndianStateCensusAnalyserTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void checkingHeaderIsCorrect_ShouldReturnCustomException() throws IOException {
+		try {
+			IndianStateCensusAnalyser censusAnalyser = new IndianStateCensusAnalyser();
+			int sizearr = censusAnalyser.loadIndianStatesData();
+			Assert.assertEquals(29, sizearr);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
