@@ -7,22 +7,15 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.Reader;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
-
 public class IndianStateCensusAnalyser {
-	public static List<IndianStatesData> statesList = new ArrayList<>();
+	public List<IndianStatesData> statesList = new ArrayList<>();
 	public static String FILE_PATH = "C:\\Users\\sshind1\\OneDrive - MORNINGSTAR INC\\Documents\\Java CFP-081\\India State Census Analyser\\lib\\IndianStateCSV.csv";
-	
-	public static void main(String[] args) throws IndianStateException {
-		IndianStateCensusAnalyser analyser = new IndianStateCensusAnalyser();
-		analyser.loadIndianStatesData();
-	}
 	
 	public Integer loadIndianStatesData() {
 		try {
@@ -41,19 +34,16 @@ public class IndianStateCensusAnalyser {
     			}
     			catch (Exception e){
     				throw new IndianStateException("Type is Incorrect");
-    			}    			
+    			}    	
     		});
     		for (int i=0 ; i<statesList.size() ; i++) {
         		System.out.println(statesList.get(i));
         		System.out.println();
-    		}		
+    		}
     		reader.close();
     		csvReader.close();
 		}
-		catch(FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		catch(IOException e) {
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 		return statesList.size();

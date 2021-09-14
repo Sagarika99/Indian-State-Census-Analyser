@@ -6,14 +6,13 @@ import com.bridgelabz.indiastatecensusanalyser.IndianStateCensusAnalyser;
 import com.bridgelabz.indiastatecensusanalyser.IndianStateException;
 
 import java.io.IOException;
-
 import org.junit.Assert;
 
 public class IndianStateCensusAnalyserTest {
-
+	
 	@Test
 	public void givenStatesCensusFile_ShouldReturnCorrectNumberOfRecords() throws IndianStateException, IOException {
-		try {
+		try {	
 			IndianStateCensusAnalyser censusAnalyser = new IndianStateCensusAnalyser();
 			int sizearr = censusAnalyser.loadIndianStatesData();
 			Assert.assertEquals(29, sizearr);
@@ -35,14 +34,26 @@ public class IndianStateCensusAnalyserTest {
 	}
 	
 	@Test
-	public void givenIncorrectType_ShouldReturnCustomException() {
+	public void givenIncorrectType_ShouldReturnCustomException() throws IOException {
 		try {
 			IndianStateCensusAnalyser censusAnalyser = new IndianStateCensusAnalyser();
 			int sizearr = censusAnalyser.loadIndianStatesData();
-			Assert.assertEquals(58, sizearr);
+			Assert.assertEquals(29, sizearr);
 		}
-		catch (RuntimeException e) {
-			e.getMessage();
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void givenIncorrectDelimeter_ShouldReturnCustomException() throws IOException {
+		try {
+			IndianStateCensusAnalyser censusAnalyser = new IndianStateCensusAnalyser();
+			int sizearr = censusAnalyser.loadIndianStatesData();
+			Assert.assertEquals(29, sizearr);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
