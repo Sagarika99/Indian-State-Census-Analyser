@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,7 +17,7 @@ import com.opencsv.CSVReaderBuilder;
 
 public class IndianStateCensusAnalyser {
 	public static List<IndianStatesData> statesList = new ArrayList<>();
-	public static String FILE_PATH = "C:\\Users\\sshind1\\OneDrive - MORNINGSTAR INC\\Documents\\Java CFP-081\\India State Census Analyser\\IndianStateCSV.csv";
+	public static String FILE_PATH = "C:\\Users\\sshind1\\OneDrive - MORNINGSTAR INC\\Documents\\Java CFP-081\\India State Census Analyser\\lib\\IndianStateCSV.csv";
 	
 	public static void main(String[] args) {
 		IndianStateCensusAnalyser analyser = new IndianStateCensusAnalyser();
@@ -51,6 +52,16 @@ public class IndianStateCensusAnalyser {
 			e.printStackTrace();
 		}
 		return statesList.size();
+	}
+	
+	public int checkFileExists() throws IndianStateException {
+		File file = new File("C:\\Users\\sshind1\\OneDrive - MORNINGSTAR INC\\Documents\\Java CFP-081\\India State Census Analyser\\lib\\IndianStateCSV.csv");
+		if (file.exists()) {
+			return 1;
+		}
+		else {
+			throw new IndianStateException("File not found");
+		}
 	}
 }
 	
